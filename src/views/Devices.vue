@@ -37,6 +37,12 @@ const formatPrice = (p?: number | null) =>
           <span class="price">{{ formatPrice(p.pricePence) }}</span>
         </div>
         <p v-if="p.description" class="desc">{{ p.description }}</p>
+        <router-link
+          :to="{ name: 'device-detail', params: { id: p.id } }"
+          class="view-details"
+        >
+          View Details →
+        </router-link>
       </li>
     </ul>
   </div>
@@ -76,6 +82,19 @@ const formatPrice = (p?: number | null) =>
 .desc {
   color: #6b7280;
   margin-top: 0.5rem;
+}
+.view-details {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: color 0.2s;
+}
+.view-details:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
 }
 .loading,
 .error,
